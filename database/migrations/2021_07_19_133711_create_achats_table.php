@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCongesTable extends Migration
+class CreateAchatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateCongesTable extends Migration
      */
     public function up()
     {
-        Schema::create('conges', function (Blueprint $table) {
+        Schema::create('achats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom')->nullable();
-            $table->string('statut')->nullable();
             $table->string('email')->nullable();
-            $table->string('type_conge')->nullable();
-            $table->string('motif')->nullable();
-            $table->date('date')->nullable();
-            $table->string('fichier')->nullable();
-            $table->date('date_debut')->nullable();
-            $table->date('date_fin')->nullable();
+            $table->integer('qte')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('ref_fourni')->nullable();
+            $table->string('devis')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ class CreateCongesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conges');
+        Schema::dropIfExists('achats');
     }
 }

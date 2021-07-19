@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Conge as ResourcesConge;
-use App\Models\Conge;
+use App\Http\Resources\Achat as ResourcesAchat;
+use App\Models\Achat;
 use Illuminate\Http\Request;
 
-class CongeController extends Controller
+class AchatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CongeController extends Controller
      */
     public function index()
     {
-        return ResourcesConge::collection(Conge::orderByDesc('created_at')->get());
+        return ResourcesAchat::collection(Achat::orderByDesc('created_at')->get());
     }
 
     /**
@@ -26,7 +26,7 @@ class CongeController extends Controller
      */
     public function store(Request $request)
     {
-        if(Conge::create($request->all())) {
+        if (Achat::create($request->all())) {
             return response()->json([
                 'success' => 'Requette envoyé avec succès'
             ], 200);
@@ -36,24 +36,24 @@ class CongeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Conge  $conge
+     * @param  \App\Models\Achat  $achat
      * @return \Illuminate\Http\Response
      */
-    public function show(Conge $conge)
+    public function show(Achat $achat)
     {
-        return new ResourcesConge($conge);
+        return new ResourcesAchat($achat);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Conge  $conge
+     * @param  \App\Models\Achat  $achat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Conge $conge)
+    public function update(Request $request, Achat $achat)
     {
-        if (Conge::update($request->all())) {
+        if (Achat::update($request->all())) {
             return response()->json([
                 'success' => 'Requette modifie avec succès'
             ], 200);
@@ -63,10 +63,10 @@ class CongeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Conge  $conge
+     * @param  \App\Models\Achat  $achat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Conge $conge)
+    public function destroy(Achat $achat)
     {
         //
     }
